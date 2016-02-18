@@ -13,4 +13,9 @@ const config: Knex.Config = {
 };
 const knex = Knex(config);
 
+// knex.on('query', query => {
+//   query.bindings = JSON.stringify(query.bindings);
+//   console.log('query: ', query);
+// });
+
 export { knex };
