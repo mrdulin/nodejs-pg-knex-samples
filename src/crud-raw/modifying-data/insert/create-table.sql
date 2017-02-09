@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS link(
+  ID serial PRIMARY KEY,
+  url VARCHAR (255) NOT NULL,
+  name VARCHAR (255) NOT NULL,
+  description VARCHAR (255),
+  rel VARCHAR(50)
+)
