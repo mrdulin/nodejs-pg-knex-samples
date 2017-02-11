@@ -1,0 +1,2 @@
+DELETE FROM link
+RETURNING *;
