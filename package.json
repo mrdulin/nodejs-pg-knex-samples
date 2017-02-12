@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/mrdulin/nodejs-pg-knex-samples#readme",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "knex": "^0.15.2",
     "pg": "^7.6.1"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.24",
     "@types/faker": "^4.1.4",
     "@types/knex": "^0.15.0",
     "@types/node": "^10.12.7",
