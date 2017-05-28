@@ -24,8 +24,19 @@ campaign_templates_locations
 
 findCampaignTemplateByShareLocationIds:
 
+sub query:
+
 ```sql
 SELECT * FROM campaign_templates WHERE campaign_template_id IN (
   SELECT campaign_template_id FROM campaign_templates_locations WHERE location_id IN (1,2)
 );
+```
+
+inner join:
+
+```sql
+SELECT DISTINCT ct.*
+FROM campaign_templates AS ct
+INNER JOIN campaign_templates_locations AS ctl ON ct.campaign_template_id = ctl.campaign_template_id
+INNER JOIN locations ON ctl.location_id = locations.location_id;
 ```
