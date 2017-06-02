@@ -10,7 +10,7 @@ function createConnection() {
       database: credentials.SQL_DATABASE,
       user: credentials.SQL_USER,
       password: credentials.SQL_PASSWORD,
-      ssl: true
+      ssl: credentials.SQL_SSL || false
     },
     pool: {
       min: 1,
@@ -21,4 +21,6 @@ function createConnection() {
   return Knex(config);
 }
 
-export { createConnection, Knex };
+const knex = createConnection();
+
+export { createConnection, Knex, knex };
