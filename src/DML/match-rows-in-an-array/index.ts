@@ -1,4 +1,4 @@
-import { knex } from '../db-local';
+import { knex } from '../../db';
 
 async function findByIds(ids: number[]) {
   const sql = `

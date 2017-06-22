@@ -1,5 +1,5 @@
-import { knex } from '../db-local';
-import { findFirstAddressByUserId, findFirstAddressByUserIdV2, findFirstAddressByUserIdV3 } from './';
+import { knex } from '../../db';
+import { findFirstAddressByUserId, findFirstAddressByUserIdV2, findFirstAddressByUserIdV3 } from '.';
 
 afterAll(async () => {
   await knex.destroy();

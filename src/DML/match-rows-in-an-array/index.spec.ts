@@ -1,5 +1,5 @@
-import { knex } from '../db-local';
-import { findByIds, findByShareIds } from './';
+import { knex } from '../../db';
+import { findByIds, findByShareIds } from '.';
 
 afterAll(async () => {
   await knex.destroy();

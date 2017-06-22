@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import { knex } from '../../db';
 import { seedConfig } from './seed-conf';
 
 function runSeed() {
