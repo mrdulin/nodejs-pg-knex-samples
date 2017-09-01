@@ -1,6 +1,6 @@
 import { latestMigrate } from './migrate-run';
 import { runSeed } from './seed-run';
-import { knex } from '../db-heroku';
+import { knex } from '../db';
 
 async function main() {
   await latestMigrate();

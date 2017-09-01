@@ -1,4 +1,4 @@
-import { knex } from '../db-heroku';
+import { knex } from '../db';
 import { migratorConfig } from './migrate-conf';
 
 function latestMigrate() {

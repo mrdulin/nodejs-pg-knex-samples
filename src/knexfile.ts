@@ -1,26 +1,21 @@
-import dotenv from 'dotenv';
-import path from 'path';
 import { ISettings } from './@types';
-
-const dotenvOutput = dotenv.config({ path: path.resolve(__dirname, '../.env') });
-if (dotenvOutput.error) {
-  throw dotenvOutput.error;
-}
+import { credentials } from './credentials';
 
 const settings: ISettings = {
   development: {
     client: 'postgresql',
     connection: {
-      host: '127.0.0.1',
-      port: 5431,
-      database: 'nodejs-pg-knex-samples',
-      user: 'sampleadmin',
-      password: 'samplepass'
+      host: credentials.SQL_HOST,
+      port: credentials.SQL_PORT,
+      database: credentials.SQL_DATABASE,
+      user: credentials.SQL_USER,
+      password: credentials.SQL_PASSWORD,
+      ssl: true
     },
-    debug: false,
+    debug: true,
     pool: {
       min: 2,
-      max: 10
+      max: 20
     },
     migrations: {
       directory: './migrations'
@@ -38,7 +33,7 @@ const settings: ISettings = {
       password: process.env.SQL_PASSWORD,
       socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
     },
-    debug: true,
+    debug: false,
     pool: {
       min: 2,
       max: 10

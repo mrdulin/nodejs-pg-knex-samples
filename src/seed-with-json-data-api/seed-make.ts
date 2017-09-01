@@ -1,4 +1,4 @@
-import { knex } from '../db-heroku';
+import { knex } from '../db';
 import { seedName, seedConfig } from './seed-conf';
 
 knex.seed

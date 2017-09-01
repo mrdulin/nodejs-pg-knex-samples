@@ -4,7 +4,8 @@
   "description": "Learning PostgreSQL, knex.js by examples.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "dev": "DOTENV_CONFIG_PATH=./.env node -r ts-node/register -r dotenv/config"
   },
   "repository": {
     "type": "git",
