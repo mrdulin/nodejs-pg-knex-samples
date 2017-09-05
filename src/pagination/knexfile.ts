@@ -1,2 +1,2 @@
-import settings from '../knexfile-heroku';
+import settings from '../knexfile';
 module.exports = settings;
