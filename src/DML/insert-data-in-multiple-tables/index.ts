@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Knex from 'knex';
 
-import { knex } from '../db-local';
+import { knex } from '../../db';
 
 async function createUserRaw(user) {
   const cols = Object.keys(user);

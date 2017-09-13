@@ -1,7 +1,6 @@
 import moment from 'moment';
 import _ from 'lodash';
-
-import { knex } from '../db-local';
+import { knex } from '../../db';
 
 const BOOKS_RELATION_NAME = 'books';
 function findAndUpdateBooksActive() {
