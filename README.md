@@ -51,3 +51,4 @@ npx ts-node ./src/<sample>/index.ts
 ## references
 
 - http://www.postgresqltutorial.com/
+- http://www.postgres.cn/docs/9.6/
