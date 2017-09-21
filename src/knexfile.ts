@@ -10,7 +10,7 @@ const settings: ISettings = {
       database: credentials.SQL_DATABASE,
       user: credentials.SQL_USER,
       password: credentials.SQL_PASSWORD,
-      ssl: true
+      ssl: credentials.SQL_SSL
     },
     debug: true,
     pool: {

@@ -4,6 +4,15 @@ Learning PostgreSQL, knex.js by examples.
 
 ## Usage
 
+```txt
+SQL_HOST=127.0.0.1
+SQL_DATABASE=nodejs-pg-knex-samples
+SQL_USER=sampleadmin
+SQL_PORT=5431
+SQL_PASSWORD=sampleadmin
+SQL_SSL=false
+```
+
 start `pg` docker container
 
 ```bash

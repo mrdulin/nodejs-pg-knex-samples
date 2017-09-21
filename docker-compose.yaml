@@ -1,18 +1,18 @@
 version: '3.1'
 services:
-  pgadmin4:
-    container_name: pgadmin4
-    image: dpage/pgadmin4:latest
-    ports:
-      - '3003:3003'
-    environment:
-      - PGADMIN_LISTEN_PORT=3003
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
-    links:
-      - cloud-sql-proxy-for-pg
-    networks:
-      - pgadmin4_pg
+  # pgadmin4:
+  #   container_name: pgadmin4
+  #   image: dpage/pgadmin4:latest
+  #   ports:
+  #     - '3003:3003'
+  #   environment:
+  #     - PGADMIN_LISTEN_PORT=3003
+  #     - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+  #     - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+  #   links:
+  #     - cloud-sql-proxy-for-pg
+  #   networks:
+  #     - pgadmin4_pg
 
   pg:
     image: postgres:9.6
@@ -23,15 +23,14 @@ services:
       POSTGRES_DB: ${SQL_DATABASE}
       POSTGRES_USER: ${SQL_USER}
       POSTGRES_PASSWORD: ${SQL_PASSWORD}
-
-  pg-dvdrental:
-    image: postgres:9.6
-    restart: always
-    ports:
-      - 5430:5432
-    environment:
-      POSTGRES_DB: dvdrental
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: dvdrentalpass
-    volumes:
-      - /Users/ldu020/workspace/nodejs-pg-knex-samples/db:/db-data
+  # pg-dvdrental:
+  #   image: postgres:9.6
+  #   restart: always
+  #   ports:
+  #     - 5430:5432
+  #   environment:
+  #     POSTGRES_DB: dvdrental
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: dvdrentalpass
+  #   volumes:
+  #     - /Users/ldu020/workspace/nodejs-pg-knex-samples/db:/db-data

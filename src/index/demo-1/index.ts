@@ -1,8 +1,9 @@
 import { createConnection, Knex } from '../../db';
 
-function main() {
-  const knex = createConnection();
-  getAllContacts(knex).then(console.log);
+async function main() {
+  const knex: Knex = createConnection();
+  await getAllContacts(knex).then(console.log);
+  await knex.destroy();
 }
 
 function getAllContacts(knex: Knex) {

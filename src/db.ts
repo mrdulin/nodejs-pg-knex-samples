@@ -12,6 +12,10 @@ function createConnection() {
       password: credentials.SQL_PASSWORD,
       ssl: true
     },
+    pool: {
+      min: 1,
+      max: 1
+    },
     debug: true
   };
   return Knex(config);
