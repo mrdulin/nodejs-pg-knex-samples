@@ -9,3 +9,14 @@ services:
       POSTGRES_DB: nodejs-pg-knex-samples
       POSTGRES_USER: sampleadmin
       POSTGRES_PASSWORD: samplepass
+  pg-dvdrental:
+    image: postgres:9.6
+    restart: always
+    ports:
+      - 5430:5432
+    environment:
+      POSTGRES_DB: dvdrental
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dvdrentalpass
+    volumes:
+      - /Users/ldu020/workspace/nodejs-pg-knex-samples/db:/db-data

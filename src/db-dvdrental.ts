@@ -4,10 +4,10 @@ const config: Knex.Config = {
   client: 'pg',
   connection: {
     host: 'localhost',
-    port: 5432,
+    port: 5430,
     database: 'dvdrental',
-    user: 'ldu020',
-    password: ''
+    user: 'postgres',
+    password: 'dvdrentalpass'
   },
   debug: true
 };

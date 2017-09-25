@@ -1,4 +1,4 @@
-import { knex } from '../db';
+import { knex } from '../db-heroku';
 import { migratorConfig, migratorName } from './migrate-conf';
 
 knex.migrate

@@ -9,4 +9,4 @@ FROM
   customer 
 INNER JOIN payment ON payment.customer_id = customer.customer_id 
 WHERE
-  customer.customer_id = 2;
+  customer.customer_id = ?;
