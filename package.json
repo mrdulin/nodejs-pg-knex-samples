@@ -20,6 +20,7 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "knex": "^0.15.2",
+    "moment": "^2.22.2",
     "pg": "^7.6.1"
   },
   "devDependencies": {
