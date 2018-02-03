@@ -66,7 +66,7 @@ async function findValidRaw() {
   return knex.raw(sql, [now, thirtyDaysAgo]).then(({ rows }) => rows);
 }
 
-async function findAndUpdateBookNewRaw() {
+async function findAndUpdateBookNewRaw(field: string, value: any) {
   const now = moment().toISOString();
   const thirtyDaysAgo = moment()
     .subtract(30, 'days')
@@ -74,9 +74,15 @@ async function findAndUpdateBookNewRaw() {
   const sql: string = `
     update books
     -- set book_new = subquery.duration_valid = TRUE AND subquery.created_valid = TRUE
-    set book_new = subquery.duration_valid AND subquery.created_valid
+    set
+      book_new = subquery.duration_valid AND subquery.created_valid,
+      book_active =
+        case
+          when subquery.duration_valid = TRUE then book_active
+          else false
+        end
     from (
-      select *,
+      select book_id,
         case
           when book_end_dte > ? then true
           else false
@@ -89,11 +95,11 @@ async function findAndUpdateBookNewRaw() {
         as created_valid
       from books
     ) as subquery
-    where books.book_id = subquery.book_id
-    RETURNING books.*;
+    where books.book_id = subquery.book_id AND ?? = ?
+    RETURNING books.*, subquery.*;
   `;
 
-  return knex.raw(sql, [now, thirtyDaysAgo]).then(({ rows }) => rows);
+  return knex.raw(sql, [now, thirtyDaysAgo, `books.${field}`, value]).then(({ rows }) => rows);
 }
 
 export { findAndUpdateBooksActive, findDurationValidRaw, findCreatedValidRaw, findValidRaw, findAndUpdateBookNewRaw };

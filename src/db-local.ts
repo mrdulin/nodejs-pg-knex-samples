@@ -8,7 +8,8 @@ const config: Knex.Config = {
     database: 'nodejs-pg-knex-samples',
     user: 'sampleadmin',
     password: 'samplepass'
-  }
+  },
+  debug: true
 };
 const knex = Knex(config);
 

@@ -43,9 +43,27 @@ describe('findValidRaw', () => {
 });
 
 describe('findAndUpdateBookNewRaw', () => {
-  it('t-1', async () => {
-    const rows = await findAndUpdateBookNewRaw();
-    console.log(rows);
-    // expect().toBe();
+  it('should set books.book_new to true when duration_valid: true, created_valid: true', async () => {
+    const field = 'book_id';
+    const value = 2;
+    const rows = await findAndUpdateBookNewRaw(field, value);
+    const row = rows[0];
+    expect(row.book_id).toBe(value);
+    expect(row.book_new).toBeTruthy();
+  });
+
+  it('should set books.book_active to true when duration_valid: true', async () => {
+    const rows = await findAndUpdateBookNewRaw('book_id', 1);
+    const row = rows[0];
+    expect(row.book_id).toBe(1);
+    expect(row.book_active).toBeTruthy();
+  });
+
+  it('should set books.book_active to true when duration_valid: false', async () => {
+    const rows = await findAndUpdateBookNewRaw('book_id', 3);
+    const row = rows[0];
+    console.log(row);
+    expect(row.book_id).toBe(3);
+    expect(row.book_active).toBeFalsy();
   });
 });
