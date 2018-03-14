@@ -129,6 +129,7 @@ async function paginateModel(
   const count = await knex
     .raw(`select cast (count(*) as integer) from ??;`, [relationName])
     .get('rows')
+    .get(0)
     .get('count');
   const hasNextPage = edges.length === first + 1;
   return {
