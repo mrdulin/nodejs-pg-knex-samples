@@ -12,7 +12,7 @@ async function findResultsByLastSeveralDaysClicks(clicks: number) {
 
   try {
     const rows = await knex.raw(sql, [clicks]).get('rows');
-    await updateResultLastClicks();
+    await updateResultLastClicksRaw();
     return rows;
   } catch (error) {
     console.log('findResultsByLastSeveralDaysClicks failed');
@@ -21,7 +21,7 @@ async function findResultsByLastSeveralDaysClicks(clicks: number) {
   }
 }
 
-async function updateResultLastClicks() {
+async function updateResultLastClicksRaw() {
   const sql = `
     UPDATE
       "RESULT" AS r
@@ -37,4 +37,10 @@ async function updateResultLastClicks() {
   }
 }
 
-export { updateResultLastClicks, findResultsByLastSeveralDaysClicks };
+async function updateResultLastClicks() {
+  return knex('RESULT')
+    .update({ result_last_clicks: knex.raw('result_clicks') })
+    .returning('*');
+}
+
+export { updateResultLastClicksRaw, findResultsByLastSeveralDaysClicks, updateResultLastClicks };
