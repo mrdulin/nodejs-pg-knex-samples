@@ -1,4 +1,5 @@
 import moment from 'moment';
+import _ from 'lodash';
 
 import { knex } from '../db-local';
 
@@ -102,4 +103,38 @@ async function findAndUpdateBookNewRaw(field: string, value: any) {
   return knex.raw(sql, [now, thirtyDaysAgo, `books.${field}`, value]).then(({ rows }) => rows);
 }
 
-export { findAndUpdateBooksActive, findDurationValidRaw, findCreatedValidRaw, findValidRaw, findAndUpdateBookNewRaw };
+async function updateByMultipleDatas(datas: any[]) {
+  const sql = `
+    UPDATE
+      books
+    SET
+      book_name = datas.book_name,
+      book_new = datas.book_new::BOOLEAN
+    FROM (
+      VALUES
+        ${datas
+          .map(data => {
+            const values = Object.keys(data).map(key => data[key]);
+            return `(${values.map(() => '?').join(',')})`;
+          })
+          .join(',')}
+    ) AS datas(book_id, book_name, book_new)
+    WHERE
+      datas.book_id::INTEGER = books.book_id;
+  `;
+  const bindings = _.flatten(
+    datas.map(data => {
+      return Object.keys(data).map(key => data[key]);
+    })
+  );
+  return knex.raw(sql, bindings);
+}
+
+export {
+  findAndUpdateBooksActive,
+  findDurationValidRaw,
+  findCreatedValidRaw,
+  findValidRaw,
+  findAndUpdateBookNewRaw,
+  updateByMultipleDatas
+};

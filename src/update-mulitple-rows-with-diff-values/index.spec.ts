@@ -4,7 +4,8 @@ import {
   findDurationValidRaw,
   findCreatedValidRaw,
   findValidRaw,
-  findAndUpdateBookNewRaw
+  findAndUpdateBookNewRaw,
+  updateByMultipleDatas
 } from './';
 
 afterAll(async () => {
@@ -65,5 +66,17 @@ describe('findAndUpdateBookNewRaw', () => {
     console.log(row);
     expect(row.book_id).toBe(3);
     expect(row.book_active).toBeFalsy();
+  });
+});
+
+describe('updateByMultipleDatas', () => {
+  it('should update multiple rows with multiple datas correctly', async () => {
+    const datas = [
+      { book_id: 1, book_name: 'react', book_new: true },
+      { book_id: 2, book_name: 'angular', book_new: false },
+      { book_id: 3, book_name: 'graphql', book_new: false }
+    ];
+    const actualValue = await updateByMultipleDatas(datas);
+    // expect().toBe();
   });
 });
