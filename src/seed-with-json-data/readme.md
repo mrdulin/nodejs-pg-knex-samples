@@ -63,6 +63,16 @@ Using environment: development
 Created seed file: /Users/ldu020/workspace/nodejs-pg-knex-samples/src/seed-with-json-data/seeds/merchants_products.ts
 ```
 
+To run seed files, execute:
+
+```bash
+☁  seed-with-json-data [master] npx knex seed:run
+Requiring external module ts-node/register
+Using environment: development
+Ran 1 seed files
+/Users/ldu020/workspace/nodejs-pg-knex-samples/src/seed-with-json-data/seeds/merchants_products.ts
+```
+
 connect `heroku` `PostgreSQL` service check the seed data
 
 ```bash
