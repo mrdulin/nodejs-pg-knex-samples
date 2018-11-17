@@ -106,3 +106,38 @@ nodejs-pg-knex-samples::DATABASE=> select * from merchants;
 
 nodejs-pg-knex-samples::DATABASE=>
 ```
+
+## check migration current version
+
+```bash
+☁  seed-with-json-data-cli [master] ⚡  npx knex migrate:currentVersion
+Requiring external module ts-node/register
+Using environment: development
+Current Version: 20181114162934
+```
+
+## Drop migration tables
+
+```bash
+☁  seed-with-json-data-cli [master] ⚡  npx knex migrate:rollback
+Requiring external module ts-node/register
+Using environment: development
+Batch 1 rolled back: 1 migrations
+/Users/ldu020/workspace/nodejs-pg-knex-samples/src/seed-with-json-data-cli/migrations/20181114162934_merchants_products.ts
+```
+
+check `PostgreSQL` tables:
+
+```bash
+nodejs-pg-knex-samples::DATABASE=> \d
+                          List of relations
+ Schema |              Name              |   Type   |     Owner
+--------+--------------------------------+----------+----------------
+ public | knex_migrations                | table    | otacrrqnhvxubd
+ public | knex_migrations_id_seq         | sequence | otacrrqnhvxubd
+ public | knex_migrations_lock           | table    | otacrrqnhvxubd
+ public | knex_migrations_lock_index_seq | sequence | otacrrqnhvxubd
+ public | users                          | table    | otacrrqnhvxubd
+ public | users_id_seq                   | sequence | otacrrqnhvxubd
+(6 rows)
+```
