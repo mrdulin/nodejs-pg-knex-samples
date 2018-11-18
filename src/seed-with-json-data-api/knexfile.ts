@@ -1,6 +1,7 @@
 // Update with your config settings.
+import { ISettings } from '../@types';
 
-module.exports = {
+const settings: ISettings = {
   development: {
     client: 'postgresql',
     connection: {
@@ -17,6 +18,9 @@ module.exports = {
     },
     migrations: {
       directory: __dirname + '/migrations'
+    },
+    seeds: {
+      directory: './seeds'
     }
   },
 
@@ -52,3 +56,5 @@ module.exports = {
     }
   }
 };
+
+module.exports = settings;
