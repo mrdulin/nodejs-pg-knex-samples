@@ -8,7 +8,8 @@ const config: Knex.Config = {
     database: 'dvdrental',
     user: 'ldu020',
     password: ''
-  }
+  },
+  debug: true
 };
 const knex = Knex(config);
 
