@@ -9,7 +9,8 @@ const config: Knex.Config = {
     user: 'otacrrqnhvxubd',
     password: 'fd33f58e8a039bc5b4abc0deea60f30b3fc531e453fad8aac592a775cc27c7be',
     ssl: true
-  }
+  },
+  debug: true
 };
 const knex = Knex(config);
 

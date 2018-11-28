@@ -1,5 +1,5 @@
-import { getBooksByPage, getBooksRelayStylePageByIdRaw } from './';
-import { knex } from '../db';
+import { getBooksByPage, getBooksRelayStylePageByIdRaw, findByIdRaw, paginateModel } from './';
+import { knex } from '../db-local';
 
 afterAll(async () => {
   await knex.destroy();
@@ -32,7 +32,25 @@ describe('getBooksRelayStylePageByIdRaw', () => {
   });
 
   it('t-2', async () => {
-    const first = 10;
+    const first = 100;
     const firstPage = await getBooksRelayStylePageByIdRaw(first);
+    expect(firstPage.pageInfo.hasNextPage).toBeFalsy();
+  });
+});
+
+describe('findByIdRaw', () => {
+  it('t-1', async () => {
+    const book = await findByIdRaw('books', 'book_id', 1);
+    console.log(book);
+    expect(book.book_id).toBe(1);
+    expect(book).toEqual(expect.objectContaining({ book_id: expect.any(Number), book_name: expect.any(String) }));
+  });
+});
+
+describe('paginateModel', () => {
+  it('t-1', async () => {
+    const firstPage = await paginateModel('books', 'book_id', 10);
+    console.log(firstPage);
+    expect(firstPage);
   });
 });
