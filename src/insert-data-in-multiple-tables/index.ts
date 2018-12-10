@@ -7,13 +7,17 @@ async function createUserRaw(user) {
   const cols = Object.keys(user);
   const values = cols.map(col => user[col]);
   const sql = `
-    insert into users (${cols.map(_ => '?').join(',')})
+    insert into users (${cols.map(() => '??').join(',')})
     values
-      (${values.map(_ => '?').join(',')})
-    on conflict do nothing;
+      (${values.map(() => '?').join(',')})
+    on conflict do nothing
+    returning *;
   `;
 
-  return knex.raw(sql, cols.concat(values));
+  return knex
+    .raw(sql, cols.concat(values))
+    .get('rows')
+    .get(0);
 }
 
 async function createUserWithAddress(data) {

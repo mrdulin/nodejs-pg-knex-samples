@@ -7,13 +7,14 @@ afterAll(async () => {
   await knex.destroy();
 });
 
-// TODO:
-describe.skip('createUserRaw', () => {
+describe('createUserRaw', () => {
+  afterEach(async () => {
+    await knex.raw(`delete from users where user_id = ?`, [4]);
+  });
   it('should create user correctly without address', async () => {
-    const user = { user_id: 4, user_name: faker.name.findName() };
+    const user = { user_id: 4, user_name: faker.name.findName(), address_id: 1 };
     const actualValue = await createUserRaw(user);
-    console.log(actualValue);
-    // expect().toBe();
+    expect(actualValue).toEqual(user);
   });
 });
 
@@ -83,7 +84,7 @@ describe.skip('createUserWithAddress', () => {
   });
 });
 
-describe('createUserTransaction', () => {
+describe.skip('createUserTransaction', () => {
   afterEach(async () => {
     await knex('users')
       .where({ user_id: 4 })
