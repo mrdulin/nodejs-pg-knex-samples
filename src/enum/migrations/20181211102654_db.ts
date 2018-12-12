@@ -14,11 +14,18 @@ exports.up = function(knex: Knex): Promise<any> {
         t.enum('channel_nme_b', [ChannelEnum.FACEBOOK, ChannelEnum.GOOGLE, ChannelEnum.INSTAGRAM], enumOptions);
       })
       .then(() => {
-        return knex.raw(`create type "channel_nme_c" as enum (?,?,?);`, [
-          ChannelEnum.FACEBOOK,
-          ChannelEnum.GOOGLE,
-          ChannelEnum.INSTAGRAM
-        ]);
+        // bindings not work
+        // return knex.raw(`create type "channel_nme_c" as enum (?,?,?);`, [
+        //   ChannelEnum.FACEBOOK,
+        //   ChannelEnum.GOOGLE,
+        //   ChannelEnum.INSTAGRAM
+        // ]);
+
+        return knex.raw(
+          `create type "channel_nme_c" as enum ('${ChannelEnum.FACEBOOK}','${ChannelEnum.GOOGLE}','${
+            ChannelEnum.INSTAGRAM
+          }');`
+        );
       })
       .then(() => {
         return knex.raw(`alter table "channel" add column if not exists channel_nme_c channel_nme_c;`);
