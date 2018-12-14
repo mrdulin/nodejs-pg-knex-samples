@@ -1,4 +1,5 @@
 import * as Knex from 'knex';
+import { Status } from '../types';
 
 exports.up = function(knex: Knex): Promise<any> {
   return Promise.all([
@@ -23,7 +24,11 @@ exports.up = function(knex: Knex): Promise<any> {
           .defaultTo(0);
       });
 
+      t.enum('result_status', [Status.ACTIVE, Status.COMPLETED, Status.PENDING]).notNullable();
       t.string('result_url').nullable();
+
+      t.dateTime('start_dte').notNullable();
+      t.dateTime('end_dte').notNullable();
     })
   ]);
 };
