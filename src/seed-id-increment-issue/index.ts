@@ -4,4 +4,8 @@ async function createOrg(org) {
   return knex('orgs').insert(org, '*');
 }
 
-export { createOrg };
+async function createORG(org) {
+  return knex('ORG').insert(org, '*');
+}
+
+export { createOrg, createORG };
