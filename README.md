@@ -46,7 +46,7 @@ npx ts-node ./src/<sample>/index.ts
 
 ## knex workflow
 
-[knex workflow]('./src/seed-with-json-data-cli/readme.md')
+[knex workflow](./src/seed-with-json-data-cli/readme.md)
 
 ## references
 
