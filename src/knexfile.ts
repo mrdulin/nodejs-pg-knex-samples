@@ -2,9 +2,9 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { ISettings } from './@types';
 
-const result = dotenv.config({ path: path.resolve(__dirname, '../.env') });
-if (result.error) {
-  throw result.error;
+const dotenvOutput = dotenv.config({ path: path.resolve(__dirname, '../.env') });
+if (dotenvOutput.error) {
+  throw dotenvOutput.error;
 }
 
 const settings: ISettings = {
@@ -31,7 +31,7 @@ const settings: ISettings = {
   },
 
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       database: process.env.SQL_DATABASE,
       user: process.env.SQL_USER,
