@@ -17,7 +17,7 @@ const settings: ISettings = {
       user: 'sampleadmin',
       password: 'samplepass'
     },
-    debug: true,
+    debug: false,
     pool: {
       min: 2,
       max: 10
