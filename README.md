@@ -52,3 +52,5 @@ npx ts-node ./src/<sample>/index.ts
 
 - http://www.postgresqltutorial.com/
 - http://www.postgres.cn/docs/9.6/
+- https://github.com/tgriesser/knex
+- http://knexjs.org/
