@@ -14,9 +14,9 @@ exports.seed = async function(knex: Knex): Promise<any> {
     .del()
     .then(function() {
       return knex('RESULT').insert([
-        { result_id: 1, result_clicks: 100, org_id: 1 },
-        { result_id: 2, result_clicks: 50, org_id: 2 },
-        { result_id: 3, result_clicks: 10, org_id: 1 }
+        { result_id: 1, result_clicks: 100, org_id: 1, clicks_records: [1, 2, 3, 4, 5, 6, 7] },
+        { result_id: 2, result_clicks: 50, org_id: 2, clicks_records: [1, 2, 3, 4, 5, 6, 7] },
+        { result_id: 3, result_clicks: 10, org_id: 1, clicks_records: [1, 2, 3] }
       ]);
     });
 };

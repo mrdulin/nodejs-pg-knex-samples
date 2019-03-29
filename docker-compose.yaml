@@ -1,14 +1,29 @@
 version: '3.1'
 services:
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:latest
+    ports:
+      - '3003:3003'
+    environment:
+      - PGADMIN_LISTEN_PORT=3003
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    links:
+      - cloud-sql-proxy-for-pg
+    networks:
+      - pgadmin4_pg
+
   pg:
     image: postgres:9.6
     restart: always
     ports:
       - 5431:5432
     environment:
-      POSTGRES_DB: nodejs-pg-knex-samples
-      POSTGRES_USER: sampleadmin
-      POSTGRES_PASSWORD: samplepass
+      POSTGRES_DB: ${SQL_DATABASE}
+      POSTGRES_USER: ${SQL_USER}
+      POSTGRES_PASSWORD: ${SQL_PASSWORD}
+
   pg-dvdrental:
     image: postgres:9.6
     restart: always
