@@ -20,7 +20,7 @@ function loadEnvVars(key: keyof ICredentials, defaultValue: number | string | bo
       return Number.parseInt(process.env.key, 10) || defaultValue;
     }
   } else if (typeof defaultValue === 'boolean') {
-    return Boolean(process.env[key]) || defaultValue;
+    return process.env[key] === 'true' || defaultValue;
   }
   return '';
 }

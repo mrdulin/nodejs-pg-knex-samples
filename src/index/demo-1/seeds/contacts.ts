@@ -9,9 +9,13 @@ exports.seed = async function(knex: Knex): Promise<any> {
 
   const contacts: any[] = [];
   for (let i = 0; i < MAX_ROWS_NUM; i++) {
+    const phones: string[] = [];
+    for (let j = 0; j < faker.random.number({ max: 5 }); j++) {
+      phones.push(faker.phone.phoneNumber());
+    }
     const contact = {
       contact_nme: faker.company.bs(),
-      contact_phone: [],
+      contact_phone: phones,
       contact_address: faker.address.streetAddress()
     };
     contacts.push(contact);
