@@ -1,1 +1,1 @@
-drop table if exists t1_geotargets;
+drop table if exists geotargets;

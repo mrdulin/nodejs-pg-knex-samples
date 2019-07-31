@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+const dotenvOutput = dotenv.config({ path: path.resolve(__dirname, '../.env') });
+// console.log('dotenvOutput.parsed: ', dotenvOutput.parsed);

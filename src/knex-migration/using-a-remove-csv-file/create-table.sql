@@ -1,4 +1,4 @@
-create table if not exists t1_geotargets (
+create table if not exists geotargets (
   id serial primary key not null,
   criteria_id varchar(50) not null,
   criteria_name varchar(255) not null,
