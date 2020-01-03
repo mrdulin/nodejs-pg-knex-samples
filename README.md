@@ -77,6 +77,32 @@ seed database
 ☁  window-function [master] ⚡  npx knex seed:run
 ```
 
+check postgresql database files
+
+```bash
+root@f29a16a93352:/# ls /db-data/pgdata/
+base	pg_clog       pg_dynshmem  pg_ident.conf  pg_multixact	pg_replslot  pg_snapshots  pg_stat_tmp	pg_tblspc    PG_VERSION  postgresql.auto.conf  postmaster.opts
+global	pg_commit_ts  pg_hba.conf  pg_logical	  pg_notify	pg_serial    pg_stat	   pg_subtrans	pg_twophase  pg_xlog	 postgresql.conf       postmaster.pid
+```
+
+## pgbench
+
+initialize testing datas
+
+```bash
+root@f29a16a93352:/# pgbench -i -s 2 -F 80 -U sampleadmin -d nodejs-pg-knex-samples
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 200000 tuples (50%) done (elapsed 2.29 s, remaining 2.29 s)
+200000 of 200000 tuples (100%) done (elapsed 4.90 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+```
+
 ## knex workflow
 
 [knex workflow](./src/seed-with-json-data-cli/readme.md)
