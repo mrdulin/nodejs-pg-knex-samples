@@ -1,4 +1,4 @@
-version: "3.1"
+version: '3.1'
 services:
   pg:
     image: postgres:9.6
@@ -10,8 +10,8 @@ services:
       POSTGRES_USER: ${SQL_USER}
       POSTGRES_PASSWORD: ${SQL_PASSWORD}
     volumes:
-      - $PWD/my-postgres.conf:/etc/postgresql/postgresql.conf
-      - ${HOST_DB_VOLUME}:/db-data
+      - ${PWD}/my-postgres.conf:/etc/postgresql/postgresql.conf
+      - ${PWD}/db-data:/db-data
     command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
   # pgadmin4:
   #   container_name: pgadmin4

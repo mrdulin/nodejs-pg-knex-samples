@@ -16,7 +16,7 @@ SQL_SSL=false
 start `pg` docker container
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 access docker container
@@ -47,10 +47,34 @@ nodejs-pg-knex-samples-# \d
 (6 rows)
 ```
 
-run sample
+Test example:
 
 ```bash
-npx ts-node ./src/<sample>/index.ts
+cd src/window-function
+```
+
+create migration files
+
+```bash
+☁  window-function [master] ⚡  npx knex migrate:make init --knexfile ./knexfile.ts
+```
+
+create seed files
+
+```bash
+☁  window-function [master] ⚡  npx knex seed:make initialize_db --knexfile ./knexfile.ts -x ts
+```
+
+migrate database
+
+```bash
+window-function [master] ⚡  npx knex migrate:latest
+```
+
+seed database
+
+```bash
+☁  window-function [master] ⚡  npx knex seed:run
 ```
 
 ## knex workflow
