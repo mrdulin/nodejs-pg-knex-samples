@@ -22,7 +22,7 @@
     "bluebird": "^3.7.2",
     "knex": "^0.20.6",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "pg": "^7.17.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
